@@ -38,7 +38,7 @@ namespace WebApi
 
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("UserDb")));
 
-
+            services.AddMemoryCache();
             services.AddScoped<UserServices>();
         }
 
