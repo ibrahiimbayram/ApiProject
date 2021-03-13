@@ -1,3 +1,4 @@
+using Business.Services;
 using DataAcces.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,9 @@ namespace WebApi
             });
 
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("UserDb")));
+
+
+            services.AddScoped<UserServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
