@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Entity.DTOS;
+using Entity.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,16 @@ namespace WebApi.Map
     {
         public Mapper()
         {
-            
+
+            CreateMap<Users, UserListDto>();
+            CreateMap<UserListDto, Users>();
+
+            CreateMap<Users, UserAddDto>();
+            CreateMap<UserAddDto, Users>();
+
+            CreateMap<Users, UserUpdateDto>();
+            CreateMap<UserUpdateDto, Users>();
+
         }
     }
 }
