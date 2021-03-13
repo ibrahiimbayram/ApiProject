@@ -40,7 +40,7 @@ namespace Business.Services
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(1),
                     Priority = CacheItemPriority.High,
                 };
-                _memoryCache.Set<List<Users>>("products", userlist, options);
+                _memoryCache.Set<List<Users>>("users", userlist, options);
             }
             return userlist;
 
@@ -56,5 +56,25 @@ namespace Business.Services
             return null;
         }
 
+
+        public async Task<Users> Update(Users users)
+        {
+
+            await _userDal.UpdateAsync(users);
+            _memoryCache.Remove("users");
+
+
+            return null;
+        }
+
+        public async Task<Users> Delete(Users users)
+        {
+
+            await _userDal.DeleteAsync(users);
+            _memoryCache.Remove("users");
+
+
+            return null;
+        }
     }
 }

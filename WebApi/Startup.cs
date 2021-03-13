@@ -1,5 +1,7 @@
 using Business.Services;
+using DataAcces.Concrete;
 using DataAcces.Context;
+using DataAcces.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,8 @@ namespace WebApi
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("UserDb")));
 
             services.AddMemoryCache();
+            services.AddScoped(typeof(IGenericDal<>),typeof(EfGenericRepository<>));
+            services.AddScoped<IUserDal, EfUserRepository>();
             services.AddScoped<UserServices>();
         }
 
