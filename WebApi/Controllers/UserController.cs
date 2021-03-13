@@ -55,13 +55,13 @@ namespace WebApi.Controllers
         }
 
 
-        //[HttpDelete]
-        //public async Task<IActionResult> Delete(UserUpdateDto users)
-        //{
+        [HttpDelete]
+        public async Task<IActionResult> Delete(UserUpdateDto users)
+        {
 
-        //    await _userServices.Delete(_mapper.Map<Users>(users));
+            await _userServices.Delete(_mapper.Map<Users>(users));
 
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace WebApi
             services.AddScoped(typeof(IGenericDal<>),typeof(EfGenericRepository<>));
             services.AddScoped<IUserDal, EfUserRepository>();
             services.AddScoped<UserServices>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
